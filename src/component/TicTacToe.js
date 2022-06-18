@@ -41,6 +41,9 @@ function TicTacToe() {
     }
 
     const handleClick = ( num) => {
+        if(winner){
+            return;
+        }
         let square = [...cells];
 
         if(square[num] !== ''){
@@ -66,11 +69,11 @@ function TicTacToe() {
     }
 
     const Cell = ({ num }) => {
-        return <td onClick={() => handleClick(num)} className='text-center text-6xl border border-slate-500 h-28 w-28'>{cells[num]}</td>;
+        return <td  onClick={() => handleClick(num)} className='text-center text-6xl border border-slate-500 h-28 w-28'>{cells[num]}</td>;
     }
   return (
-    <div className='container'> 
-        Turn: {turn}
+    <div className='flex flex-col items-center gap-6'>
+        <h1 className='text-4xl'>TURN : {turn}</h1>
         <table className='table-fixed border-separate border-spacing-2 border border-slate-500 '>
             <tbody>
                 <tr>
@@ -90,7 +93,7 @@ function TicTacToe() {
                 </tr>
             </tbody>
         </table>
-        <Button onClick={() => handleRestart()}>Play again</Button>
+        <Button className='bg-blue-500 text-white font-medium px-2 py-1 rounded hover:bg-blue-600 w-96' onClick={() => handleRestart()}>Reset</Button>
         {winner && (
             <>
                 <WinnerCard handleRestart={handleRestart}>{winner}</WinnerCard>
