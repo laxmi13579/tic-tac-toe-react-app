@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import './TicTacToe.css';
+import Button from '../UI/Button';
+import WinnerCard from './WinnerCard';
+// import './TicTacToe.css';
+// import './style.css';
 
 function TicTacToe() {
     const [turn, setTurn ] = useState('X');
@@ -63,12 +66,12 @@ function TicTacToe() {
     }
 
     const Cell = ({ num }) => {
-        return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
+        return <td onClick={() => handleClick(num)} className='text-center text-6xl border border-slate-500 h-28 w-28'>{cells[num]}</td>;
     }
   return (
     <div className='container'> 
-        <table>
         Turn: {turn}
+        <table className='table-fixed border-separate border-spacing-2 border border-slate-500 '>
             <tbody>
                 <tr>
                     <Cell num={0}/>
@@ -87,10 +90,10 @@ function TicTacToe() {
                 </tr>
             </tbody>
         </table>
+        <Button onClick={() => handleRestart()}>Play again</Button>
         {winner && (
             <>
-                <p>{winner}  is winner!</p>
-                <button onClick={() => handleRestart()}>play again</button>
+                <WinnerCard handleRestart={handleRestart}>{winner}</WinnerCard>
             </>
         )}
     </div>

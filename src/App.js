@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import TicTacToe from './TicTacToe';
+import Table from './component/Table';
+import TicTacToe from './component/TicTacToe';
+import WinnerCard from './component/WinnerCard';
 
 function App() {
   return (
-    <>
+    <div className='container p-4'>
       <TicTacToe/>
-    </>
+    </div>
     
   );
 }
