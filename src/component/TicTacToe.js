@@ -44,7 +44,7 @@ function TicTacToe() {
         let square = [...cells];
 
         if(square[num] !== ''){
-            alert('already filled');
+            alert('BOX is already filled');
             return;
         }
 
